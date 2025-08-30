@@ -49,8 +49,12 @@ export default function Home() {
       const reader = res.body?.getReader();
       const decoder = new TextDecoder();
 
+      if (!reader) {
+        throw new Error("ReadableStream reader is not available.");
+      }
+
       while (true) {
-        const { done, value }: any = await reader?.read();
+        const { done, value } = await reader.read();
 
         if (done) break;
 
