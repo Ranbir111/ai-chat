@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
         const { message } = await req.json();
 
         const response = await ai.models.generateContent({
-            model: "gemini-1.5-flash",
+            model: process.env.GEMINI_API_MODEL,
             contents: message,
         });
         return NextResponse.json({ response: response.text });
