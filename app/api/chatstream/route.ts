@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
         const { message } = await req.json();
 
         const response = await ai.models.generateContentStream({
-            model: process.env.GEMINI_API_MODEL,
+            model: process.env.GEMINI_API_MODEL!,
             contents: message,
             config: {
                 systemInstruction: "You are a Software Engineer. Your name is Ranbir.",
